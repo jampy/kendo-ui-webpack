@@ -8,6 +8,10 @@
  * Primarily targeted at Webpack "builds".
  */
 
+var fs = require("fs");
+var path = require("path");
+var wrench = require("wrench");
+
 
 /**
  * The main mapping which contains all necessary information where to find
@@ -251,34 +255,55 @@ var mapping = {
 };
 
 
-var fs = require("fs");
-var path = require("path");
 
 // auto-generate .js files according to mapping
 console.log("Writing proxy files...");
 var count = 0;
 
 for (var fn in mapping)
-if (mapping.hasOwnProperty(fn)) {
+  if (mapping.hasOwnProperty(fn)) {
 
-  var objs = mapping[fn];
+    var objs = mapping[fn];
 
-  objs.forEach(function(obj) {
-    var req = JSON.stringify('kendo-ui-core/src/' + fn);
+    objs.forEach(function(obj) {
+      var req = JSON.stringify('kendo-ui-core/src/' + fn);
 
-    var oi = obj.split(".");
-    if (oi.shift() != "kendo")
-      throw new Exception("All exported object must begin with kendo.");
+      var oi = obj.split(".");
+      if (oi.shift() != "kendo")
+        throw new Exception("All exported object must begin with kendo.");
 
-    var code = 'module.exports = require(' + req + ').' + oi.join(".") + ";";
+      var code = 'module.exports = require(' + req + ').' + oi.join(".") + ";";
 
-    var out_fn = path.join(__dirname, '..', obj + '.js');
+      var out_fn = path.join(__dirname, '..', obj + '.js');
 
-    fs.writeFileSync(out_fn, code, "utf8");
+      fs.writeFileSync(out_fn, code, "utf8");
 
-    count++;
-  });
+      count++;
+    });
 
-}
+  }
 
 console.log("done (" + count + " files written).");
+
+//--
+
+/*
+ * Note: Unfortunately I found no way to logically "link" or "import" a whole
+ * CommonJS directory/submodule just using require() tricks. So, at this point
+ * the whole "styles" directory is copied from the kendo-ui-core module into
+ * this module, making them accessible as part of kendo-ui-webpack.
+ */
+
+console.log("Copying styles...");
+
+var base_from = path.join(__dirname, "..", "node_modules", "kendo-ui-core",
+  "dist", "styles");
+var base_to = path.join(__dirname, "..", "styles");
+
+wrench.copyDirSyncRecursive(base_from, base_to, {
+  excludeHiddenUnix : false,
+  preserveFiles : false,
+  preserveTimestamps : true,
+  inflateSymlinks : false
+});
+ 
