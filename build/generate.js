@@ -272,8 +272,7 @@ for (var fn in mapping)
       if (oi.shift() != "kendo")
         throw new Exception("All exported object must begin with kendo.");
 
-      var code = 'require("jquery");\n' +
-        'module.exports = require(' + req + ').' + oi.join(".") + ";";
+      var code = 'module.exports = require(' + req + ').' + oi.join(".") + ";";
 
       var out_fn = path.join(__dirname, '..', obj + '.js');
 

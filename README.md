@@ -52,13 +52,37 @@ allows a simpler/shorter `require("kendo/kendo.ui.Calendar")`
 
 ## Installing
 
-To use Kendo web components in your application is a simple as...
+### Dependencies
+
+First, you need to add the required modules:
 
 ```
-npm install kendo-ui-webpack --save-deps
+npm install kendo-ui-webpack --save
+npm install jquery --save
+npm install imports-loader --save
 ```
 
-However, you might want add the CSS styles of the Kendo theme you choose to 
+The `imports-loader` is a mandatory Webpack loader that helps with a nasty 
+Kendo problem. The core library depends on jQuery, but doesn't tell so in the
+CommonJS requires. The `imports-loaded` helps to add the dependency and to 
+inject the "global variable" `jQuery`, that's expected by Kendo.
+
+For the loader to work, you need to add the following configuration to the 
+Webpack config:
+
+```javascript
+  module: {
+    loaders: {
+      { test: /kendo\-ui\-core[\///].*\.js$/, loader: "imports?jQuery=jquery" },
+    }
+  }
+```
+
+Unfortunately, there is no way to automatize this in `kendo-ui-webpack` itself.
+
+### Add CSS theme
+
+Furthermore, you might want add the CSS styles of the Kendo theme you choose to 
 use. In the most basic form that means you add the following code at some 
 central place (probably the entry point) of your application:
 

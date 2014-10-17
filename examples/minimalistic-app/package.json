@@ -1,0 +1,19 @@
+{
+  "name": "minimalistic-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^0.9.0",
+    "imports-loader": "^0.6.3",
+    "kendo-ui-webpack": "^1.0.0",
+    "style-loader": "^0.8.1",
+    "url-loader": "^0.5.5",
+    "jquery": "^1.9.1"
+  }
+}
