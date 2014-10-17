@@ -1,6 +1,6 @@
 {
   "name": "kendo-ui-webpack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Udo Giacomozzi <udo.giacomozzi@indunet.it> (http://www.indunet.it)",
   "description": "Proxy module for kendo-ui-core, designed for Webpack or CommonJS in general",
   "dependencies": {
