@@ -50,6 +50,31 @@ For example, having a Webpack config like...
 
 allows a simpler/shorter `require("kendo/kendo.ui.Calendar")`
 
+## Installing
+
+To use Kendo web components in your application is a simple as...
+
+```
+npm install kendo-ui-webpack --save-deps
+```
+
+However, you might want add the CSS styles of the Kendo theme you choose to 
+use. In the most basic form that means you add the following code at some 
+central place (probably the entry point) of your application:
+
+```javascript
+require("kendo/styles/web/kendo.common.core.css");
+require("kendo/styles/web/kendo.default.css");
+```
+
+Or, if you didn't define the alias (see above)...
+
+```javascript
+require("kendo-ui-webpack/styles/web/kendo.common.core.css");
+require("kendo-ui-webpack/styles/web/kendo.default.css");
+```
+
+
 ## How this works
 
 This package mainly consists of a "generator" script that has a internal list
