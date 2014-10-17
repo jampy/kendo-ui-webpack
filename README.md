@@ -5,10 +5,21 @@ referencing directly the raw source code (not minified) with all components
 and classes accessible via `require()` calls.
 
 Don't bother where to find a specific class. Don't list the components you 
-really need in your Gruntfile (or whatever). Let webpack do the work for you.
+really need in your Gruntfile (or whatever). Let 
+[Webpack](https://webpack.github.io/) do the work for you.
+
 It will find automagically all dependencies and happily minify your code, 
 resulting in a compact build.
  
+## Advantages
+
+- smaller code base, because only really used widgets are included
+- automatic dependency injection - you don't have to manually list the used 
+Kendo files in your build
+- Webpack friendly - only required static assets (images etc.) are included 
+and can be inlined, just the way you want it
+- minify / uglify the way *you* want it
+
 ## Usage
  
 You can still use Kendo components either as jQuery plugins or via markdown. 
