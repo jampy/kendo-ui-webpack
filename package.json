@@ -4,9 +4,7 @@
   "author": "Udo Giacomozzi <udo.giacomozzi@indunet.it> (http://www.indunet.it)",
   "description": "Proxy module for kendo-ui-core, designed for Webpack or CommonJS in general",
   "dependencies": {
-    "kendo-ui-core": "1.0.x"
-  },
-  "devDependencies": {
+    "kendo-ui-core": "1.0.x",
     "wrench": "^1.5.8"
   },
   "scripts": {
