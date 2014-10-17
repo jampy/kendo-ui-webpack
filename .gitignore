@@ -1,0 +1,2 @@
+# don't include built modules:
+./*.js

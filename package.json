@@ -1,0 +1,12 @@
+{
+  "name": "kendo-ui-webpack",
+  "version": "1.0.0",
+  "dependencies": {
+    "kendo-ui-core": "1.0.x"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "install": "node build/generate.js"
+  }
+}
