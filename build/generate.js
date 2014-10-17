@@ -272,7 +272,8 @@ for (var fn in mapping)
       if (oi.shift() != "kendo")
         throw new Exception("All exported object must begin with kendo.");
 
-      var code = 'module.exports = require(' + req + ').' + oi.join(".") + ";";
+      var code = 'require("jquery");\n' +
+        'module.exports = require(' + req + ').' + oi.join(".") + ";";
 
       var out_fn = path.join(__dirname, '..', obj + '.js');
 
@@ -286,13 +287,6 @@ for (var fn in mapping)
 console.log("done (" + count + " files written).");
 
 //--
-
-/*
- * Note: Unfortunately I found no way to logically "link" or "import" a whole
- * CommonJS directory/submodule just using require() tricks. So, at this point
- * the whole "styles" directory is copied from the kendo-ui-core module into
- * this module, making them accessible as part of kendo-ui-webpack.
- */
 
 console.log("Copying styles...");
 
