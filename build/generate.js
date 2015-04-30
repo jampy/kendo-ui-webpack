@@ -65,10 +65,7 @@ var mapping = {
     "kendo.version"
   ],
   "kendo.data.js" : [
-    // ???
-
-    // NOTE: kendo.data is usually not accessed directly, but rather as Kendo
-    // plugins
+    "kendo.data.DataSource"
   ],
   "kendo.data.odata.js" : [
     "kendo.data.schemas.odata",
