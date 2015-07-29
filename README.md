@@ -8,7 +8,7 @@ Don't bother where to find a specific class. Don't list the components you
 really need in your Gruntfile (or whatever). Let 
 [Webpack](https://webpack.github.io/) do the work for you.
 
-It will find automagically all dependencies and happily minify your code, 
+It will automagically find all dependencies and happily minify your code, 
 resulting in a compact build.
  
 ## Advantages
@@ -46,7 +46,7 @@ example above, the `kendo.ui.Calendar` class (which Kendo also injects into
 the global namespace) can be loaded via 
 `require("kendo-ui-webpack/kendo.ui.Calendar")`.
 
-If you want shorter names in the `require()` call, you might use Webpacks 
+If you want shorter names in the `require()` call, you might use Webpack's 
 module alias feature.
 
 For example, having a Webpack config like...
@@ -75,7 +75,7 @@ npm install imports-loader --save
 
 The `imports-loader` is a mandatory Webpack loader that helps with a nasty 
 Kendo problem. The core library depends on jQuery, but doesn't tell so in the
-CommonJS requires. The `imports-loaded` helps to add the dependency and to 
+CommonJS requires. The `imports-loader` helps to add the dependency and to 
 inject the "global variable" `jQuery`, that's expected by Kendo.
 
 For the loader to work, you need to add the following configuration to the 
@@ -112,7 +112,7 @@ require("kendo-ui-webpack/styles/web/kendo.default.css");
 
 ## How this works
 
-This package mainly consists of a "generator" script that has a internal list
+This package mainly consists of a "generator" script that has an internal list
 describing all public Kendo classes and the corresponding file that defines it.
 At NPM install time, it generates a bunch of tiny .js files that make up the 
 modules you can `require()` and themselves `require()` the correct Kendo file.
