@@ -80,7 +80,11 @@ var mapping = {
   "kendo.data.xml.js" : [
     "kendo.data.readers.xml"
   ],
-
+  
+  "kendo.grid.js" : [
+    "kendo.ui.Grid"
+  ],
+  
   "kendo.datepicker.js" : [
     "kendo.ui.DatePicker"
   ],
