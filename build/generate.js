@@ -292,8 +292,10 @@ console.log("Copying styles...");
 
 var base_from = path.join(
   path.dirname(require.resolve("kendo-ui-core/package.json")),
-  "dist/styles");
-var base_to = path.join(__dirname, "../styles");
+  "dist",
+  "styles"
+);
+var base_to = path.join(__dirname, "..", "styles");
 
 wrench.copyDirSyncRecursive(base_from, base_to, {
   excludeHiddenUnix : false,
